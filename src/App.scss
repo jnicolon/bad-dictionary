@@ -1,0 +1,33 @@
+@import "./styles/variables.scss";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  button {
+    outline: none;
+    border: none;
+    text-decoration: none;
+    &:active {
+      box-shadow: none;
+      transform: none;
+    }
+    &:focus {
+      border: none;
+      outline: none;
+    }
+  }
+  
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  
+  a {
+    text-decoration: none;
+    color: black;
+  }
