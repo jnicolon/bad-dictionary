@@ -1,0 +1,17 @@
+.trending-container {
+  margin-top: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 380px;
+  list-style: none;
+  li {
+    font-family: $primary-font;
+    color: $secondary-color;
+    font-size: 0.8rem;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

@@ -1,11 +1,10 @@
-
 import "./App.scss";
-import NavHome from "./components/NavHome";
+import NavHome from "./components/Nav/NavHome";
 
 function App() {
   return (
     <div>
-      <NavHome/>
+      <NavHome />
     </div>
   );
 }

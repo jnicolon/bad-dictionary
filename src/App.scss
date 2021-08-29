@@ -1,34 +1,36 @@
 @import "./styles/variables.scss";
-@import './styles/home.scss';
+@import "./styles/home.scss";
+@import "./styles/searchBar.scss";
+@import "./styles/trending.scss";
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+button {
+  outline: none;
+  border: none;
+  text-decoration: none;
+  &:active {
+    box-shadow: none;
+    transform: none;
   }
-  
-  button {
-    outline: none;
+  &:focus {
     border: none;
-    text-decoration: none;
-    &:active {
-      box-shadow: none;
-      transform: none;
-    }
-    &:focus {
-      border: none;
-      outline: none;
-    }
+    outline: none;
   }
-  
-  body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-  }
-  
-  a {
-    text-decoration: none;
-    color: black;
-  }
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}

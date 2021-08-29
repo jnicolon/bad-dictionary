@@ -1,0 +1,31 @@
+.form-container {
+  @include flex-colum-center;
+  flex-direction: row;
+  margin-top: 5px;
+}
+.header-search {
+  width: 300px;
+  height: 40px;
+  margin: 5px;
+  border-radius: 2px;
+  padding: 5px;
+  font-size: 1rem;
+  font-family: $primary-font;
+  border: none;
+  &:focus {
+    outline: none;
+  }
+}
+
+.search-btn {
+  border: none;
+  width: 50px;
+  height: 40px;
+  border-radius: 2px;
+  padding: 5px;
+  margin: 5px;
+  background-color: $secondary-color;
+  &:hover {
+    background-color: #f7e29e;
+  }
+}
