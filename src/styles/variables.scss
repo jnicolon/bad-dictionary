@@ -5,3 +5,10 @@ $secondary-border: #e4dfca;
 $background-color: #fffcf2;
 $font-color-primary: rgba(0,0,0,.85);
 $font-color-secondary: #888;
+
+@mixin flex-colum-center{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
