@@ -10,8 +10,18 @@
     font-family: $primary-font;
     color: $secondary-color;
     font-size: 0.8rem;
-    &:hover {
-      text-decoration: underline;
-    }
+  }
+}
+
+.trending-title {
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.trending-word {
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
   }
 }

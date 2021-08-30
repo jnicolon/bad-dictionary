@@ -1,7 +1,7 @@
 .home-nav-container {
   background-color: $primary-color;
   width: 100vw;
-  @include flex-colum-center;
+  @include flex-column-center;
   padding: 20px;
   img {
     height: 90px;
@@ -16,6 +16,6 @@
     text-align: center;
   }
   div {
-    @include flex-colum-center;
+    @include flex-column-center;
   }
 }

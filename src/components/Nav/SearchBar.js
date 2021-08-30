@@ -1,5 +1,5 @@
 import React from "react";
-import { BsSearch } from "react-icons/bs";
+import { FaSearch } from "react-icons/fa";
 
 function SearchBar() {
   return (
@@ -7,7 +7,7 @@ function SearchBar() {
       <form className="form-container">
         <input type="text" className="header-search" placeholder="Search" />
         <button className="search-btn" type="submit">
-          <BsSearch />
+          <FaSearch />
         </button>
       </form>
     </div>

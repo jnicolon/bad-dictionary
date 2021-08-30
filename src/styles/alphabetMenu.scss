@@ -1,0 +1,48 @@
+.alphabet-menu-container {
+  width: 100vw;
+  min-height: 60px;
+  background-color: $secondary-color;
+  padding: 10px;
+  @include flex-column-center;
+  border-bottom: 1px solid #e4dfca;
+}
+
+.alphabet-menu-inner-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  max-width: 1200px;
+  min-height: 40px;
+  justify-content: flex-start;
+  padding: 0px 10px 0px 10px;
+}
+
+.alphabet-letter {
+  font-family: $primary-font;
+  color: $primary-color;
+  text-transform: uppercase;
+  font-size: 1rem;
+  margin: 3px;
+}
+
+.alphabet-letter-outter {
+  width: 31px;
+  height: 31px;
+  @include flex-column-center;
+  margin-right: 2px;
+}
+
+.alphabet-letter-container {
+  border: 1px solid $primary-color;
+  @include flex-column-center;
+  padding: 10px;
+  width: 25px;
+  height: 25px;
+  border-radius: 100px;
+  cursor: pointer;
+  &:hover {
+    width: 30px;
+    height: 30px;
+  }
+}
