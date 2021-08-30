@@ -1,0 +1,34 @@
+.higlights-title-conteiner {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.highlights-title {
+  font-family: $primary-font;
+  font-weight: 100;
+  font-size: 1.3rem;
+}
+
+.highlights-btn {
+  font-family: $primary-font;
+  font-weight: 100;
+  font-size: 0.7rem;
+  border: 1px solid $font-color-secondary;
+  padding: 2px 5px 2px 5px;
+  border-radius: 3px;
+  @include flex-column-center;
+  flex-direction: row;
+  color: $font-color-secondary;
+  transition: all 0.5s;
+  cursor: pointer;
+  &:hover {
+    color: $primary-color;
+    border: 1px solid $primary-color;
+  }
+}
+
+.more-arrow {
+  font-size: 35px;
+}
