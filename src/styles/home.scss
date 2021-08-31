@@ -5,12 +5,13 @@
   @include flex-column-center;
   justify-content: flex-start;
   padding: 30px 50px 0px 50px;
+  min-height: 50vh;
 }
 
 .main-content-container {
   max-width: 1000px;
   width: 100%;
-  min-height: 100px;
+
   @include flex-column-center;
   justify-content: flex-start;
   color: $font-color-primary;

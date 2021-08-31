@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const trendingWords = ["self", "cross", "time", "genus", "long", "piss"];
 
@@ -8,9 +9,11 @@ function Trending() {
       <li className="trending-title">Trending Words:</li>
       {trendingWords.map((word, index) => {
         return (
-          <li key={index} className="trending-word">
-            {word}
-          </li>
+          <Link to={`/word/${word}`}>
+            <li key={index} className="trending-word">
+              {word}
+            </li>
+          </Link>
         );
       })}
     </ul>
