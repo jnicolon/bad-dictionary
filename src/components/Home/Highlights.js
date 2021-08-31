@@ -10,7 +10,7 @@ function Highlights() {
   return (
     <div className="highlights-container">
       <div className="higlights-title-container">
-        <h2 className="highlights-title">Recomended words</h2>
+        <h2 className="highlights-title">Selected words</h2>
         <div className="highlights-btn">
           <h2>More</h2>
           <RiArrowRightSLine className="more-arrow" />

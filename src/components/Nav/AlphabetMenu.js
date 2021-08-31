@@ -34,8 +34,8 @@ function AlphabetMenu() {
   return (
     <div className="alphabet-menu-container">
       <ul className="alphabet-menu-inner-container">
-        {alphabet.map((letter) => {
-          return <AlphabetLetter letter={letter} />;
+        {alphabet.map((letter, index) => {
+          return <AlphabetLetter key={index} letter={letter} />;
         })}
       </ul>
     </div>

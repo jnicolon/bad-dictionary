@@ -6,8 +6,12 @@ function Trending() {
   return (
     <ul className="trending-container">
       <li className="trending-title">Trending Words:</li>
-      {trendingWords.map((word) => {
-        return <li className="trending-word">{word}</li>;
+      {trendingWords.map((word, index) => {
+        return (
+          <li key={index} className="trending-word">
+            {word}
+          </li>
+        );
       })}
     </ul>
   );

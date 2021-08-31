@@ -1,6 +1,7 @@
 import "./App.scss";
 import NavHome from "./components/Nav/NavHome";
 import Home from "./pages/Home";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <div className="main-container">
         <Home />
       </div>
+      <Footer />
     </div>
   );
 }
