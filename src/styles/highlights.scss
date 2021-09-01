@@ -84,6 +84,14 @@
 
   h2 {
     margin-bottom: 10px;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  p {
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 
@@ -96,6 +104,9 @@
   padding: 20px;
   h3 {
     font-size: 15px;
+    &:hover {
+      text-decoration: underline;
+    }
   }
   cursor: pointer;
 }
