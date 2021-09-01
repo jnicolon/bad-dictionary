@@ -9,7 +9,7 @@ function Footer() {
           <div className="terms-container">
             <p>Terms of service | Privacy Policy</p>
           </div>
-          <p>© 2021 Arthur Mayer</p>
+          <p>© 2021 Arthur Meyer</p>
         </div>
       </div>
     </div>

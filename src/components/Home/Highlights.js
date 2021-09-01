@@ -19,20 +19,20 @@ function Highlights() {
       <div className="highlights-content-container">
         <HighlightsCard
           src={Jelly}
-          alt="Jelly"
-          title="Jelly"
+          alt="jelly"
+          title="jelly"
           text="Jellylike food that’s most commonly used in a peanut butter & jelly sandwich. Peanut butter’s the brown stuff. Jelly’s the other stuff. It’s the jelly."
         />
         <HighlightsCard
           src={Shoulder}
-          alt="Shoulder"
-          title="Shoulder"
+          alt="shoulder"
+          title="shoulder"
           text="Look left. Now look down. That’s your shoulder. Now look right. And look down. That’s your other shoulder."
         />
         <HighlightsCard
           src={Two}
-          alt="Two"
-          title="Two"
+          alt="two"
+          title="two"
           text="It’s this thing: 2. It’s one more than one. It’s the second number, so it’s a big deal. So yeah, if you saw a goat, and then another goat came along, you’d be like, “Check it out, it’s two goats.” If you just saw one goat, though, you wouldn’t be like, “Check it out - one goat.” You’d just say, “Check it out - a goat.” So yeah, anyway, two is 2."
         />
       </div>

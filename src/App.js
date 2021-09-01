@@ -9,13 +9,13 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div>
+    <div className="main-wrapper">
       <Router>
         <NavHome />
         <div className="main-container">
           <Switch>
             <Route path="/" exact component={Home} />
-            <Route path="/word/:wordId" component={WordPage} />
+            <Route path="/word/:word" component={WordPage} />
             <Route path="*" component={NoMatch} />
           </Switch>
         </div>
