@@ -9,6 +9,7 @@
 @import "./styles/footer.scss";
 @import "./styles/wordPage.scss";
 @import "./styles//relatedWords.scss";
+@import "./styles/addword.scss";
 
 * {
   margin: 0;
@@ -46,4 +47,7 @@ a {
   min-height: 100vh;
   position: relative;
   background-color: $background-color;
+  display: flex;
+  @include flex-column-center;
+  justify-content: space-between;
 }

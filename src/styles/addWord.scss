@@ -1,0 +1,60 @@
+.addword-container {
+  @include flex-column-center;
+  label {
+    margin-bottom: 20px;
+  }
+  button {
+    padding: 10px;
+    border: solid black 1px;
+    border-radius: 5px;
+    &:hover {
+      background-color: black;
+      color: white;
+    }
+    &:focus {
+      border: solid black 1px;
+      border-radius: 5px;
+    }
+  }
+  input {
+    padding: 5px;
+  }
+  h3 {
+    font-size: 0.8rem;
+    color: red;
+    margin-bottom: 10px;
+  }
+}
+
+.addword-input {
+  margin-bottom: 20px;
+}
+
+.related {
+  button {
+    padding: 2px;
+    margin-left: 10px;
+  }
+}
+
+.related-display-container {
+  @include flex-column-center;
+  flex-direction: row;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  max-width: 250px;
+}
+
+.related-display-word {
+  padding: 3px;
+  border-radius: 10px;
+  border: solid 1px black;
+  margin: 5px;
+}
+
+.addword-clear-form {
+  font-size: 0.8rem;
+  margin-top: 20px;
+  background-color: brown;
+  color: white;
+}
