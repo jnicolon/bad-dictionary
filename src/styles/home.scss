@@ -1,5 +1,6 @@
 .main-container {
   width: 100%;
+  height: 100%;
   background-color: $background-color;
   @include flex-column-center;
   justify-content: flex-start;

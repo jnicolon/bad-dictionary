@@ -13,7 +13,6 @@ router.get("/words", async (req, res) => {
 //to get a specific word in the collection
 router.get("/singleword", async (req, res) => {
   const word = await Word.findOne({ word: req.query.word });
-  console.log(word);
   res.send(word);
 });
 
@@ -30,9 +29,9 @@ router.post("/addword", async (req, res) => {
     await word.save();
 
     res.send(word);
-  } catch {
+  } catch (err) {
     res.status(404);
-    res.send({ error: "word does not exist" });
+    res.send({ error: err });
   }
 });
 
