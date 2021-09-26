@@ -10,6 +10,13 @@ router.get("/words", async (req, res) => {
   res.send(words);
 });
 
+//to get a specific word in the collection
+router.get("/singleword", async (req, res) => {
+  const word = await Word.findOne({ word: req.query.word });
+  console.log(word);
+  res.send(word);
+});
+
 //to add a single word in the collection
 router.post("/addword", async (req, res) => {
   try {
