@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import httpRequests from "../config/httpRequests";
 
 import { ImCheckmark } from "react-icons/im";
 
@@ -10,9 +11,6 @@ function AddWordPage() {
   const [related, setRelated] = useState("");
 
   const [error, setError] = useState("");
-
-  console.log(related);
-  console.log(relatedArray);
 
   const handleRelatedArray = (e) => {
     e.preventDefault();
@@ -27,9 +25,15 @@ function AddWordPage() {
     }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleClear = () => {
+    setWord("");
+    setType("");
+    setDefinition("");
+    setRelated("");
+    setRelatedArray([]);
+  };
 
+  const handleSubmit = (e) => {
     if (word.length < 1 || type.length < 1 || definition.length < 1) {
       setError(`Fields can't be empty`);
     } else {
@@ -40,16 +44,12 @@ function AddWordPage() {
         related: relatedArray,
       };
       console.log(wordObject);
+      httpRequests
+        .post("/addword", wordObject)
+        .then(console.log("word added"))
+        .catch((err) => console.log(err));
+      handleClear();
     }
-  };
-
-  const handleClear = (e) => {
-    e.preventDefault();
-    setWord("");
-    setType("");
-    setDefinition("");
-    setRelated("");
-    setRelatedArray([]);
   };
 
   return (
@@ -72,7 +72,7 @@ function AddWordPage() {
             setType(e.target.value);
           }}
           className="addword-input"
-          placeholder="Type ((n.), (v.), etc)"
+          placeholder="Type: (n.), (v.), etc."
           type="text"
         ></input>
         <textarea
@@ -114,7 +114,13 @@ function AddWordPage() {
           })}
         </div>
         <h3>{error}</h3>
-        <button type="submit" onClick={(e) => handleSubmit(e)}>
+        <button
+          type="submit"
+          onClick={(e) => {
+            e.preventDefault();
+            handleSubmit();
+          }}
+        >
           Add word
         </button>
         <button className="addword-clear-form" onClick={(e) => handleClear(e)}>

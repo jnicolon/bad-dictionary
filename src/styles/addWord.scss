@@ -1,5 +1,7 @@
 .addword-container {
   @include flex-column-center;
+  justify-content: flex-start;
+  margin-bottom: 50px;
   label {
     margin-bottom: 20px;
   }
