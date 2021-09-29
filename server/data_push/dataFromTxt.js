@@ -1,5 +1,4 @@
 const fs = require("fs");
-const Word = require("../models/Word");
 
 //A function to make entries objects and save them on an array
 //Starting from a text file
@@ -25,6 +24,16 @@ try {
       type: "(n.)",
       related: ["jelly", "shoulder", "one"],
     });
+  });
+
+  const stringData = JSON.stringify(dataArray);
+
+  fs.writeFile("structuredData.js", stringData, (err) => {
+    if (err) {
+      console.log(err);
+      return;
+    }
+    console.log("data written succesfully");
   });
 } catch (err) {
   console.error(err);
