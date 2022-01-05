@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import httpRequests from "../config/httpRequests";
 
 import { ImCheckmark } from "react-icons/im";
+import UploadImg from "../components/AddWord/UploadImg";
 
 function AddWordPage() {
   const [word, setWord] = useState("");
@@ -11,6 +12,9 @@ function AddWordPage() {
   const [related, setRelated] = useState("");
 
   const [error, setError] = useState("");
+
+  //TODO: add img upload
+  //TODO: success upload message modal or text
 
   const handleRelatedArray = (e) => {
     e.preventDefault();
@@ -65,16 +69,6 @@ function AddWordPage() {
           placeholder="Word (all lowercase)"
           type="text"
         ></input>
-        {/* TODO:Make this a select imput */}
-        <input
-          value={type}
-          onChange={(e) => {
-            setType(e.target.value);
-          }}
-          className="addword-input"
-          placeholder="Type: (n.), (v.), etc."
-          type="text"
-        ></input>
         <textarea
           value={definition}
           onChange={(e) => {
@@ -113,7 +107,9 @@ function AddWordPage() {
             );
           })}
         </div>
+        <UploadImg />
         <h3>{error}</h3>
+
         <button
           type="submit"
           onClick={(e) => {
