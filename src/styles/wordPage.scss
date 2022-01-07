@@ -10,3 +10,11 @@
 .word-page-pargraph {
   margin: 20px 0px;
 }
+
+.word-page-image {
+  height: 200px;
+  width: 300px;
+  object-fit: cover;
+  border: 3px solid $secondary-border;
+  margin-bottom: 20px;
+}
