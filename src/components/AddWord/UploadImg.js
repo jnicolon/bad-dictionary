@@ -8,6 +8,8 @@ function UploadImg({ setFile }) {
 
   return (
     <div>
+      <label>Add image</label>
+      <br />
       <input type="file" onChange={fileSelectedHandler} />
     </div>
   );

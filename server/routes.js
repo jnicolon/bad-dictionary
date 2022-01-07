@@ -18,8 +18,10 @@ router.get("/words", async (req, res) => {
 
 //to get a specific word in the collection
 router.get("/singleword", async (req, res) => {
-  //TODO:case sensitive search. change it so all words work.
-  const word = await Word.findOne({ word: req.query.word });
+  const caseSensitiveWord = req.query.word.toLowerCase();
+  console.log(caseSensitiveWord);
+
+  const word = await Word.findOne({ word: caseSensitiveWord });
   res.send(word);
 });
 
@@ -28,9 +30,9 @@ router.post("/addword", async (req, res) => {
   try {
     const word = new Word({
       word: req.body.word,
-      type: "",
       definition: req.body.definition,
       related: req.body.related,
+      imagePath: req.body.imagePath,
     });
 
     await word.save();
@@ -57,6 +59,7 @@ router.delete("/deleteword/:word", async (req, res) => {
 router.post("/uploadImage", upload.single("image"), async (req, res) => {
   const file = req.file;
   const result = await uploadFile(file);
+
   fs.unlink(file.path, (err) => {
     if (err) throw err;
     console.log("file deleted");

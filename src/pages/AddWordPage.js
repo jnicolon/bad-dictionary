@@ -11,12 +11,10 @@ function AddWordPage() {
   const [relatedArray, setRelatedArray] = useState([]);
   const [related, setRelated] = useState("");
   const [file, setFile] = useState("");
-  const [imgPath, setImgPath] = useState("");
 
   const [error, setError] = useState("");
 
   //add img to s3 bucket and get a pathname to download it
-
   const handleFileUpload = async () => {
     const formData = new FormData();
     formData.append("image", file);
@@ -65,8 +63,6 @@ function AddWordPage() {
       setError(`Fields can't be empty`);
     }
 
-    console.log(file);
-
     const result = await handleFileUpload();
     const imagePath = result.data.imagePath;
 
@@ -78,8 +74,6 @@ function AddWordPage() {
       related: relatedArray,
       imagePath,
     };
-
-    console.log(wordObject);
 
     httpRequests
       .post("/addword", wordObject)
