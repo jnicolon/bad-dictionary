@@ -1,19 +1,43 @@
 import React, { useState } from "react";
 import httpRequests from "../config/httpRequests";
+import axios from "axios";
 
 import { ImCheckmark } from "react-icons/im";
 import UploadImg from "../components/AddWord/UploadImg";
 
 function AddWordPage() {
   const [word, setWord] = useState("");
-  const [type, setType] = useState("");
   const [definition, setDefinition] = useState("");
   const [relatedArray, setRelatedArray] = useState([]);
   const [related, setRelated] = useState("");
+  const [file, setFile] = useState("");
+  const [imgPath, setImgPath] = useState("");
 
   const [error, setError] = useState("");
 
-  //TODO: add img upload
+  //add img to s3 bucket and get a pathname to download it
+
+  const handleFileUpload = async () => {
+    const formData = new FormData();
+    formData.append("image", file);
+
+    const results = await axios
+      .post("http://localhost:5000/api/uploadImage", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        return res;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    return results;
+  };
+
   //TODO: success upload message modal or text
 
   const handleRelatedArray = (e) => {
@@ -31,29 +55,37 @@ function AddWordPage() {
 
   const handleClear = () => {
     setWord("");
-    setType("");
     setDefinition("");
     setRelated("");
     setRelatedArray([]);
   };
 
-  const handleSubmit = (e) => {
-    if (word.length < 1 || type.length < 1 || definition.length < 1) {
+  const handleSubmit = async (e) => {
+    if (word.length < 1 || definition.length < 1) {
       setError(`Fields can't be empty`);
-    } else {
-      const wordObject = {
-        word,
-        type,
-        definition,
-        related: relatedArray,
-      };
-      console.log(wordObject);
-      httpRequests
-        .post("/addword", wordObject)
-        .then(console.log("word added"))
-        .catch((err) => console.log(err));
-      handleClear();
     }
+
+    console.log(file);
+
+    const result = await handleFileUpload();
+    const imagePath = result.data.imagePath;
+
+    console.log(imagePath);
+
+    const wordObject = {
+      word,
+      definition,
+      related: relatedArray,
+      imagePath,
+    };
+
+    console.log(wordObject);
+
+    httpRequests
+      .post("/addword", wordObject)
+      .then(console.log("word added"))
+      .catch((err) => console.log(err));
+    handleClear();
   };
 
   return (
@@ -107,7 +139,7 @@ function AddWordPage() {
             );
           })}
         </div>
-        <UploadImg />
+        <UploadImg setFile={setFile} />
         <h3>{error}</h3>
 
         <button

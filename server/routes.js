@@ -1,6 +1,12 @@
 const express = require("express");
 const Word = require("./models/Word");
 const router = express.Router();
+const multer = require("multer");
+const fs = require("fs");
+
+const { uploadFile } = require("./file_upload/s3");
+
+const upload = multer({ dest: "uploads/" });
 
 //In this file are the routes for the api
 
@@ -22,7 +28,7 @@ router.post("/addword", async (req, res) => {
   try {
     const word = new Word({
       word: req.body.word,
-      type: req.body.type,
+      type: "",
       definition: req.body.definition,
       related: req.body.related,
     });
@@ -45,6 +51,18 @@ router.delete("/deleteword/:word", async (req, res) => {
     res.status(404);
     res.send({ error: "Word does not exist" });
   }
+});
+
+//to upload an image to the server
+router.post("/uploadImage", upload.single("image"), async (req, res) => {
+  const file = req.file;
+  const result = await uploadFile(file);
+  fs.unlink(file.path, (err) => {
+    if (err) throw err;
+    console.log("file deleted");
+  });
+
+  res.send({ imagePath: result.Location });
 });
 
 module.exports = router;
