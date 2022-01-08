@@ -26,9 +26,16 @@ router.get("/singleword", async (req, res) => {
 
 //to add a single word in the collection
 router.post("/addword", async (req, res) => {
+  let wordTemp;
+  if (req.body.word) {
+    wordTemp = req.body.word.toLowerCase();
+  } else {
+    wordTemp = "word not found";
+  }
+
   try {
     const word = new Word({
-      word: req.body.word.toLowerCase(),
+      word: wordTemp,
       definition: req.body.definition,
       related: req.body.related,
       imagePath: req.body.imagePath,

@@ -1,6 +1,6 @@
 import React from "react";
 
-function UploadAudio({ setAudioFile }) {
+function UploadAudio({ setAudioFile, audioInputRef }) {
   const fileSelectedHandler = (e) => {
     console.log(e.target.files[0]);
     setAudioFile(e.target.files[0]);
@@ -10,7 +10,7 @@ function UploadAudio({ setAudioFile }) {
     <div>
       <label>Add audio</label>
       <br />
-      <input type="file" onChange={fileSelectedHandler} />
+      <input ref={audioInputRef} type="file" onChange={fileSelectedHandler} />
     </div>
   );
 }

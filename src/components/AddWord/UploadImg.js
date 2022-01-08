@@ -1,8 +1,7 @@
 import React from "react";
 
-function UploadImg({ setImageFile }) {
+function UploadImg({ imageInputRef, setImageFile }) {
   const fileSelectedHandler = (e) => {
-    console.log(e.target.files[0]);
     setImageFile(e.target.files[0]);
   };
 
@@ -10,7 +9,7 @@ function UploadImg({ setImageFile }) {
     <div>
       <label>Add image</label>
       <br />
-      <input type="file" onChange={fileSelectedHandler} />
+      <input ref={imageInputRef} type="file" onChange={fileSelectedHandler} />
     </div>
   );
 }

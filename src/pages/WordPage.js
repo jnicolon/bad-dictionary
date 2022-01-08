@@ -15,7 +15,7 @@ function WordPage() {
     httpRequest
       .get("/singleword", {
         params: {
-          word,
+          word: word,
         },
       })
       .then((res) => {

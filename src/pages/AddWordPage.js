@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import httpRequests from "../config/httpRequests";
 import axios from "axios";
 
@@ -11,8 +11,11 @@ function AddWordPage() {
   const [definition, setDefinition] = useState("");
   const [relatedArray, setRelatedArray] = useState([]);
   const [related, setRelated] = useState("");
-  const [imageFile, setImageFile] = useState("");
-  const [audioFile, setAudioFile] = useState("");
+  const [imageFile, setImageFile] = useState(null);
+  const [audioFile, setAudioFile] = useState(null);
+
+  const imageInputRef = useRef();
+  const audioInputRef = useRef();
 
   const [error, setError] = useState("");
 
@@ -81,6 +84,8 @@ function AddWordPage() {
     setDefinition("");
     setRelated("");
     setRelatedArray([]);
+    imageInputRef.current.value = "";
+    audioInputRef.current.value = "";
   };
 
   const handleSubmit = async (e) => {
@@ -94,11 +99,8 @@ function AddWordPage() {
     const resultAudio = await handleAudioUpload();
     const audioPath = resultAudio.data.audioPath;
 
-    console.log(imagePath);
-    console.log(audioPath);
-
     const wordObject = {
-      word,
+      word: word.trim(),
       definition,
       related: relatedArray,
       imagePath,
@@ -163,8 +165,11 @@ function AddWordPage() {
             );
           })}
         </div>
-        <UploadImg setImageFile={setImageFile} />
-        <UploadAudio setAudioFile={setAudioFile} />
+        <UploadImg setImageFile={setImageFile} imageInputRef={imageInputRef} />
+        <UploadAudio
+          setAudioFile={setAudioFile}
+          audioInputRef={audioInputRef}
+        />
         <h3>{error}</h3>
 
         <button
