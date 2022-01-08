@@ -16,13 +16,13 @@ const s3 = new aws.S3({
   signatureVersion: "v4",
 });
 
-//upload file to s3
+//upload image file to s3
 
-function uploadFile(file) {
+function uploadImage(file) {
   const fileStream = fs.createReadStream(file.path);
 
   const uploadParams = {
-    Bucket: bucketName,
+    Bucket: `${bucketName}/images`,
     Body: fileStream,
     Key: file.filename,
   };
@@ -30,4 +30,17 @@ function uploadFile(file) {
   return s3.upload(uploadParams).promise();
 }
 
-module.exports = { uploadFile };
+//upload audio file to s3
+
+function uploadAudio(file) {
+  const fileStream = fs.createReadStream(file.path);
+
+  const uploadParams = {
+    Bucket: `${bucketName}/audio`,
+    Body: fileStream,
+    Key: file.filename,
+  };
+
+  return s3.upload(uploadParams).promise();
+}
+module.exports = { uploadImage, uploadAudio };

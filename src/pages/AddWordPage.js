@@ -4,23 +4,48 @@ import axios from "axios";
 
 import { ImCheckmark } from "react-icons/im";
 import UploadImg from "../components/AddWord/UploadImg";
+import UploadAudio from "../components/AddWord/UploadAudio";
 
 function AddWordPage() {
   const [word, setWord] = useState("");
   const [definition, setDefinition] = useState("");
   const [relatedArray, setRelatedArray] = useState([]);
   const [related, setRelated] = useState("");
-  const [file, setFile] = useState("");
+  const [imageFile, setImageFile] = useState("");
+  const [audioFile, setAudioFile] = useState("");
 
   const [error, setError] = useState("");
 
   //add img to s3 bucket and get a pathname to download it
-  const handleFileUpload = async () => {
+  const handleImageUpload = async () => {
     const formData = new FormData();
-    formData.append("image", file);
+    formData.append("image", imageFile);
+    console.log(imageFile);
 
     const results = await axios
       .post("http://localhost:5000/api/uploadImage", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        return res;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    return results;
+  };
+
+  //add audio to s3 bucket and get a pathname to download it
+  const handleAudioUpload = async () => {
+    const formData = new FormData();
+    formData.append("audio", audioFile);
+
+    const results = await axios
+      .post("http://localhost:5000/api/uploadAudio", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -63,16 +88,21 @@ function AddWordPage() {
       setError(`Fields can't be empty`);
     }
 
-    const result = await handleFileUpload();
-    const imagePath = result.data.imagePath;
+    const resultImage = await handleImageUpload();
+    const imagePath = resultImage.data.imagePath;
+
+    const resultAudio = await handleAudioUpload();
+    const audioPath = resultAudio.data.audioPath;
 
     console.log(imagePath);
+    console.log(audioPath);
 
     const wordObject = {
       word,
       definition,
       related: relatedArray,
       imagePath,
+      audioPath,
     };
 
     httpRequests
@@ -92,7 +122,7 @@ function AddWordPage() {
             setWord(e.target.value);
           }}
           className="addword-input"
-          placeholder="Word (all lowercase)"
+          placeholder="Word"
           type="text"
         ></input>
         <textarea
@@ -133,7 +163,8 @@ function AddWordPage() {
             );
           })}
         </div>
-        <UploadImg setFile={setFile} />
+        <UploadImg setImageFile={setImageFile} />
+        <UploadAudio setAudioFile={setAudioFile} />
         <h3>{error}</h3>
 
         <button

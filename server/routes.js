@@ -4,7 +4,7 @@ const router = express.Router();
 const multer = require("multer");
 const fs = require("fs");
 
-const { uploadFile } = require("./file_upload/s3");
+const { uploadImage, uploadAudio } = require("./file_upload/s3");
 
 const upload = multer({ dest: "uploads/" });
 
@@ -19,7 +19,6 @@ router.get("/words", async (req, res) => {
 //to get a specific word in the collection
 router.get("/singleword", async (req, res) => {
   const caseSensitiveWord = req.query.word.toLowerCase();
-  console.log(caseSensitiveWord);
 
   const word = await Word.findOne({ word: caseSensitiveWord });
   res.send(word);
@@ -33,6 +32,7 @@ router.post("/addword", async (req, res) => {
       definition: req.body.definition,
       related: req.body.related,
       imagePath: req.body.imagePath,
+      audioPath: req.body.audioPath,
     });
 
     await word.save();
@@ -58,7 +58,7 @@ router.delete("/deleteword/:word", async (req, res) => {
 //to upload an image to the server
 router.post("/uploadImage", upload.single("image"), async (req, res) => {
   const file = req.file;
-  const result = await uploadFile(file);
+  const result = await uploadImage(file);
 
   fs.unlink(file.path, (err) => {
     if (err) throw err;
@@ -66,6 +66,20 @@ router.post("/uploadImage", upload.single("image"), async (req, res) => {
   });
 
   res.send({ imagePath: result.Location });
+});
+
+//to upload an audio file to the server
+
+router.post("/uploadAudio", upload.single("audio"), async (req, res) => {
+  const file = req.file;
+  const result = await uploadAudio(file);
+
+  fs.unlink(file.path, (err) => {
+    if (err) throw err;
+    console.log("file deleted");
+  });
+
+  res.send({ audioPath: result.Location });
 });
 
 module.exports = router;

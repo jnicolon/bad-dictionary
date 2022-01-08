@@ -1,18 +1,18 @@
 import React from "react";
 
-function UploadImg({ setImageFile }) {
+function UploadAudio({ setAudioFile }) {
   const fileSelectedHandler = (e) => {
     console.log(e.target.files[0]);
-    setImageFile(e.target.files[0]);
+    setAudioFile(e.target.files[0]);
   };
 
   return (
     <div>
-      <label>Add image</label>
+      <label>Add audio</label>
       <br />
       <input type="file" onChange={fileSelectedHandler} />
     </div>
   );
 }
 
-export default UploadImg;
+export default UploadAudio;
