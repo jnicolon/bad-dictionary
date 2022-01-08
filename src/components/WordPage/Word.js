@@ -1,4 +1,5 @@
 import React from "react";
+import ReactAudioPlayer from "react-audio-player";
 
 function Word({ wordObject }) {
   console.log(wordObject);
@@ -15,6 +16,9 @@ function Word({ wordObject }) {
       <p className="word-page-pargraph">
         {wordObject.definition && wordObject.definition}
       </p>
+      {wordObject.audioPath && (
+        <ReactAudioPlayer src={wordObject.audioPath} controls />
+      )}
     </div>
   );
 }

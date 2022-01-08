@@ -28,7 +28,7 @@ router.get("/singleword", async (req, res) => {
 router.post("/addword", async (req, res) => {
   try {
     const word = new Word({
-      word: req.body.word,
+      word: req.body.word.toLowerCase(),
       definition: req.body.definition,
       related: req.body.related,
       imagePath: req.body.imagePath,
