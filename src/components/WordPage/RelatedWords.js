@@ -7,9 +7,9 @@ function RelatedWords({ wordObject }) {
       <h3>{`Entries related to ${wordObject.word}`}</h3>
       <ul>
         {wordObject.related &&
-          wordObject.related.map((word) => {
+          wordObject.related.map((word, index) => {
             return (
-              <li>
+              <li key={index}>
                 <RelatedBtn word={word} />
               </li>
             );
