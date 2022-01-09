@@ -9,7 +9,7 @@ function Home() {
       <Highlights />
       <HomeContent />
       <Link to="/admin/addword">
-        <Button>Go to add word</Button>
+        <button>Go to add word</button>
       </Link>
     </div>
   );
