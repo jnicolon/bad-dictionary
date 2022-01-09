@@ -8,7 +8,9 @@ function Home() {
     <div className="main-content-container">
       <Highlights />
       <HomeContent />
-      <Link to="/admin/addword">Go to add word</Link>
+      <Link to="/admin/addword">
+        <Button>Go to add word</Button>
+      </Link>
     </div>
   );
 }
