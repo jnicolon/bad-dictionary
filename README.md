@@ -8,3 +8,9 @@ main-content-container class style found at /src/styles/home.scss
 
 addWordpage:
 http://localhost:3000/addword
+
+Heroku
+https://bad-dictionary.herokuapp.com/
+
+Netlify
+https://bad-dictionary.netlify.app/
