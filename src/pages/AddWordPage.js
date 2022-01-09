@@ -6,6 +6,8 @@ import { ImCheckmark } from "react-icons/im";
 import UploadImg from "../components/AddWord/UploadImg";
 import UploadAudio from "../components/AddWord/UploadAudio";
 
+import { baseURL } from "../config/httpRequests";
+
 function AddWordPage() {
   const [word, setWord] = useState("");
   const [definition, setDefinition] = useState("");
@@ -26,7 +28,7 @@ function AddWordPage() {
     console.log(imageFile);
 
     const results = await axios
-      .post("http://localhost:5000/api/uploadImage", formData, {
+      .post(`${baseURL}/uploadImage`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -48,7 +50,7 @@ function AddWordPage() {
     formData.append("audio", audioFile);
 
     const results = await axios
-      .post("http://localhost:5000/api/uploadAudio", formData, {
+      .post(`${baseURL}/uploadAudio`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
