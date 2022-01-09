@@ -17,7 +17,7 @@ function App() {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/word/:word" component={WordPage} />
-            <Route exact path="/addword" component={AddWordPage} />
+            <Route exact path="/admin/addword" component={AddWordPage} />
             <Route component={NoMatch} />
           </Switch>
         </div>
